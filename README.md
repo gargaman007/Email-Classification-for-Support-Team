@@ -3,7 +3,7 @@ title: Email Classification and PII Masking API
 emoji: 📧
 colorFrom: blue
 colorTo: purple
-sdk: gradio
+sdk: dockerfile
 sdk_version: "latest"
 app_file: main.py
 pinned: false
