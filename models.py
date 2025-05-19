@@ -36,8 +36,8 @@ class ModelManager:
     def load_models(self):
         # Load NER model
         ner_model_name = "Davlan/bert-base-multilingual-cased-ner-hrl"
-        self.ner_tokenizer = AutoTokenizer.from_pretrained(ner_model_name)
-        self.ner_model = AutoModelForTokenClassification.from_pretrained(ner_model_name)
+        self.ner_tokenizer = AutoTokenizer.from_pretrained("./model")
+        self.ner_model = AutoModelForTokenClassification.from_pretrained("./model")
         self.ner_pipeline = TokenClassificationPipeline(
             model=self.ner_model.to('cpu'),
             tokenizer=self.ner_tokenizer,
@@ -46,7 +46,7 @@ class ModelManager:
         )
 
         # Load classification models
-        self.classification_model = SentenceTransformer('paraphrase-multilingual-mpnet-base-v2')
+        self.classification_model = SentenceTransformer('./sbert_model')
         
         with open("label_encoder.pkl", "rb") as f:
             self.label_encoder = pickle.load(f)
