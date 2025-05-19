@@ -7,6 +7,9 @@ sdk: dockerfile
 sdk_version: "latest"
 app_file: main.py
 pinned: false
+models:
+  - Davlan/bert-base-multilingual-cased-ner-hrl
+  - sentence-transformers/paraphrase-multilingual-mpnet-base-v2
 ---
 
 # Email Classification and PII Masking API
@@ -53,10 +56,10 @@ pip install -r requirements.txt
 1.  Start the FastAPI server:
 
 ```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 80
+uvicorn main:app --reload --host 0.0.0.0 --port 7860
 ```
 
-**Note for Hugging Face Spaces:** We explicitly bind to `0.0.0.0` and port `80`, which is typically required by Spaces.
+**Note for Hugging Face Spaces:** We explicitly bind to `0.0.0.0` and port `7860`, which is typically required by Spaces.
 
 2.  The API will be available at the Space's URL (e.g., `https://your-username-your-space-name.hf.space`).
 
@@ -123,6 +126,6 @@ To deploy this application on Hugging Face Spaces:
 3.  Crucially, under **SDK**, select **"Static"**.
 4.  In your Space's settings, link your **GitHub repository** containing these files.
 5.  Hugging Face Spaces will automatically detect the `requirements.txt` and install the dependencies.
-6.  It will then look for an `app_file` specified in the frontmatter (`main.py` in this case) to run. For a "Static" Space running a FastAPI application, it will execute `uvicorn main:app --host 0.0.0.0 --port 80`.
+6.  It will then look for an `app_file` specified in the frontmatter (`main.py` in this case) to run. For a "Static" Space running a FastAPI application, it will execute `uvicorn main:app --host 0.0.0.0 --port 7860`.
 
 Ensure all your model files (`label_encoder.pkl`, `pca.pkl`, `mlp_model.pth`) are present in your repository at the root level or in the same directory as `main.py`.
