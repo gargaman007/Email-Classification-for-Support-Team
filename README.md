@@ -95,7 +95,7 @@ uvicorn main:app --reload --host 0.0.0.0 --port 7860
     }
   ],
   "masked_email": "Hello, my name is [full_name] and my email is [email]. I'm having trouble with my account.",
-  "category_of_the_email": "Billing Issues"
+  "category_of_the_email": "Issues"
 }
 ```
 
